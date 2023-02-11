@@ -97,7 +97,7 @@ metadata:
   name: mysql-secret
 type: kubernetes.io/basic-auth
 stringData:
-  password: test1234
+  password: "dGVzdDEyNDU="
 ---
 # Source: weatherapp-mysql/templates/pv.yml
 apiVersion: v1
