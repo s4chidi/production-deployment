@@ -3,81 +3,44 @@ kind: Namespace
 metadata:
   labels:
     app.kubernetes.io/created-by: retail-store-sample
-  name: assets
----
-apiVersion: v1
-kind: Namespace
-metadata:
-  labels:
-    app.kubernetes.io/created-by: retail-store-sample
-  name: carts
----
-apiVersion: v1
-kind: Namespace
-metadata:
-  labels:
-    app.kubernetes.io/created-by: retail-store-sample
-  name: catalog
----
-apiVersion: v1
-kind: Namespace
-metadata:
-  labels:
-    app.kubernetes.io/created-by: retail-store-sample
-  name: checkout
----
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: orders
----
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: rabbitmq
----
-apiVersion: v1
-kind: Namespace
-metadata:
-  labels:
-    app.kubernetes.io/created-by: retail-store-sample
-  name: ui
+  name: stormer
+
 ---
 apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: assets
-  namespace: assets
+  namespace: stormer
 ---
 apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: carts
-  namespace: carts
+  namespace: stormer
 ---
 apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: catalog
-  namespace: catalog
+  namespace: stormer
 ---
 apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: checkout
-  namespace: checkout
+  namespace: stormer
 ---
 apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: orders
-  namespace: orders
+  namespace: stormer
 ---
 apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: rabbitmq
-  namespace: rabbitmq
+  namespace: stormer
 ---
 apiVersion: v1
 kind: ServiceAccount
@@ -87,7 +50,7 @@ metadata:
     app.kubernetes.io/instance: ui
     app.kubernetes.io/name: ui
   name: ui
-  namespace: ui
+  namespace: stormer
 ---
 apiVersion: v1
 data:
@@ -95,7 +58,7 @@ data:
 kind: ConfigMap
 metadata:
   name: assets
-  namespace: assets
+  namespace: stormer
 ---
 apiVersion: v1
 data:
@@ -107,14 +70,14 @@ data:
 kind: ConfigMap
 metadata:
   name: carts
-  namespace: carts
+  namespace: stormer
 ---
 apiVersion: v1
 data: null
 kind: ConfigMap
 metadata:
   name: catalog
-  namespace: catalog
+  namespace: stormer
 ---
 apiVersion: v1
 data:
@@ -123,7 +86,7 @@ data:
 kind: ConfigMap
 metadata:
   name: checkout
-  namespace: checkout
+  namespace: stormer
 ---
 apiVersion: v1
 data:
@@ -132,14 +95,14 @@ data:
 kind: ConfigMap
 metadata:
   name: orders
-  namespace: orders
+  namespace: stormer
 ---
 apiVersion: v1
 data: null
 kind: ConfigMap
 metadata:
   name: rabbitmq
-  namespace: rabbitmq
+  namespace: stormer
 ---
 apiVersion: v1
 data:
@@ -151,7 +114,7 @@ data:
 kind: ConfigMap
 metadata:
   name: ui
-  namespace: ui
+  namespace: stormer
 ---
 apiVersion: v1
 data:
@@ -162,7 +125,7 @@ data:
 kind: Secret
 metadata:
   name: catalog-db
-  namespace: catalog
+  namespace: stormer
 ---
 apiVersion: v1
 data:
@@ -173,13 +136,13 @@ data:
 kind: Secret
 metadata:
   name: orders-db
-  namespace: orders
+  namespace: stormer
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: assets
-  namespace: assets
+  namespace: stormer
 spec:
   ports:
   - name: http
@@ -196,7 +159,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: carts
-  namespace: carts
+  namespace: stormer
 spec:
   ports:
   - name: http
@@ -213,7 +176,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: carts-dynamodb
-  namespace: carts
+  namespace: stormer
 spec:
   ports:
   - name: dynamodb
@@ -230,7 +193,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: catalog
-  namespace: catalog
+  namespace: stormer
 spec:
   ports:
   - name: http
@@ -247,7 +210,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: catalog-mysql
-  namespace: catalog
+  namespace: stormer
 spec:
   ports:
   - name: mysql
@@ -264,7 +227,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: checkout
-  namespace: checkout
+  namespace: stormer
 spec:
   ports:
   - name: http
@@ -281,7 +244,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: checkout-redis
-  namespace: checkout
+  namespace: stormer
 spec:
   ports:
   - name: redis
@@ -298,7 +261,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: orders
-  namespace: orders
+  namespace: stormer
 spec:
   ports:
   - name: http
@@ -315,7 +278,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: orders-mysql
-  namespace: orders
+  namespace: stormer
 spec:
   ports:
   - name: mysql
@@ -332,7 +295,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: rabbitmq
-  namespace: rabbitmq
+  namespace: stormer
 spec:
   ports:
   - name: amqp
@@ -357,7 +320,7 @@ metadata:
     app.kubernetes.io/instance: ui
     app.kubernetes.io/name: ui
   name: ui
-  namespace: ui
+  namespace: stormer
 spec:
   ports:
   - name: http
@@ -378,7 +341,7 @@ metadata:
     app.kubernetes.io/instance: ui
     app.kubernetes.io/name: ui
   name: ui-lb
-  namespace: ui
+  namespace: stormer
 spec:
   ports:
   - name: http
@@ -397,7 +360,7 @@ metadata:
   labels:
     app.kubernetes.io/created-by: retail-store-sample
   name: assets
-  namespace: assets
+  namespace: stormer
 spec:
   replicas: 1
   selector:
@@ -462,7 +425,7 @@ metadata:
     app.kubernetes.io/created-by: retail-store-sample
     app.kubernetes.io/type: app
   name: carts
-  namespace: carts
+  namespace: stormer
 spec:
   replicas: 1
   selector:
@@ -535,7 +498,7 @@ metadata:
     app.kubernetes.io/created-by: retail-store-sample
     app.kubernetes.io/team: database
   name: carts-dynamodb
-  namespace: carts
+  namespace: stormer
 spec:
   replicas: 1
   selector:
@@ -568,7 +531,7 @@ metadata:
     app.kubernetes.io/created-by: retail-store-sample
     app.kubernetes.io/type: app
   name: catalog
-  namespace: catalog
+  namespace: stormer
 spec:
   replicas: 1
   selector:
@@ -668,7 +631,7 @@ metadata:
     app.kubernetes.io/created-by: retail-store-sample
     app.kubernetes.io/team: database
   name: catalog-mysql
-  namespace: catalog
+  namespace: stormer
 spec:
   replicas: 1
   selector:
@@ -719,7 +682,7 @@ metadata:
     app.kubernetes.io/created-by: retail-store-sample
     app.kubernetes.io/type: app
   name: checkout
-  namespace: checkout
+  namespace: stormer
 spec:
   replicas: 1
   selector:
@@ -787,7 +750,7 @@ metadata:
     app.kubernetes.io/created-by: retail-store-sample
     app.kubernetes.io/team: database
   name: checkout-redis
-  namespace: checkout
+  namespace: stormer
 spec:
   replicas: 1
   selector:
@@ -820,7 +783,7 @@ metadata:
     app.kubernetes.io/created-by: retail-store-sample
     app.kubernetes.io/type: app
   name: orders
-  namespace: orders
+  namespace: stormer
 spec:
   replicas: 1
   selector:
@@ -923,7 +886,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: orders-mysql
-  namespace: orders
+  namespace: stormer
 spec:
   replicas: 1
   selector:
@@ -969,7 +932,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: rabbitmq
-  namespace: rabbitmq
+  namespace: stormer
 spec:
   replicas: 1
   selector:
@@ -1003,7 +966,7 @@ metadata:
     app.kubernetes.io/created-by: retail-store-sample
     app.kubernetes.io/type: app
   name: ui
-  namespace: ui
+  namespace: stormer
 spec:
   replicas: 1
   selector:
