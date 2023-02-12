@@ -24,7 +24,7 @@ spec:
         io.kompose.service: restaurant
     spec:
       containers:
-        - image: "{{ .Values.image.repository }:{ .Values.image.tag }}"
+        - image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           name: restaurant
           ports:
             - containerPort: 80
